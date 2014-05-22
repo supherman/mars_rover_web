@@ -1,0 +1,27 @@
+<h1>Rover <%= @rover.id %></h1>
+
+<p>
+  Position in x: <strong id="rover-x"><%= @rover.x %></strong>
+</p>
+
+<p>
+  Position in y: <strong id="rover-y"><%= @rover.y %></strong>
+</p>
+
+<p>
+  Facing: <strong id="rover-facing"><%= @rover.facing %></strong>
+</p>
+
+<%= image_tag('robot.png', id: 'robot') %>
+<canvas id="grid" width="500" height="500">
+</canvas>
+
+<script>
+  window.onload = function(){
+    var grid = new Grid(10, 10);
+    grid.draw();
+    window.rover = new Rover(grid, <%= @rover.id %>, <%= @rover.x %>, <%= @rover.y %>, '<%= @rover.facing %>');
+    rover.draw();
+    rover.listen();
+  };
+</script>
